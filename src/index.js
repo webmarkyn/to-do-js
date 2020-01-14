@@ -1,2 +1,2 @@
-import Project from './project.module'
-import Todo from './todo.module'
+import Project from './project'
+import Todo from './todo'
