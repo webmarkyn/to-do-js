@@ -1,10 +1,15 @@
 export default class Todo {
-    constructor(name, description='', priority = null, date) {
+    constructor(id, name, description='', priority = null, date) {
+        this._id = id;
         this._name = name;
         this._description = description;
         this._state = false;
         this._priority = priority;
         this._date = date;
+    }
+
+    getId() {
+        return this._id;
     }
 
     getName() {
