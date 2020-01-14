@@ -1,23 +1,23 @@
 export default class Project {
     constructor(name) {
-        this.name = name;
-        this.todos = [];
+        this._name = name;
+        this._todos = [];
     }
 
     getName() {
-        return this.name;
+        return this._name;
     }
 
     getTodos() {
-        return [...this.todos];
+        return [...this._todos];
     }
 
     getTodo(index) {
-        return this.todos[index];
+        return this._todos[index];
     }
 
     setTodos(value) {
-        this.todos = value;
+        this._todos = value;
     }
 
     addTodo(todo) {
