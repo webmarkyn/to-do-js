@@ -1,6 +1,7 @@
 import Project from './project';
 
 let projects = [];
+let actualProject = '';
 const projectList = document.getElementById('projectList');
 const newProjectBtn = document.getElementById('newProjectBtn');
 const newProjectInput = document.getElementById('newProjectInput');
@@ -16,6 +17,14 @@ if (localStorage.getItem('projects') !== null) {
       projectList.appendChild(projectLi);
       projects.push(newProject);
    });
+} else {
+   const defaultProject = new Project(0, 'My first Project');
+   const projectLi = document.createElement('li');
+
+   projectLi.innerText = defaultProject.getName();
+   projectList.appendChild(projectLi);
+   projects.push(defaultProject);
+   localStorage.setItem('projects', JSON.stringify(projects));
 }
 
 // listener for create new projects
@@ -32,7 +41,6 @@ newProjectBtn.addEventListener('click', () => {
       projectLi.innerText = newProject.getName();
       projectList.appendChild(projectLi);
 
-      localStorage.removeItem('projects');
       localStorage.setItem('projects', JSON.stringify(projects));
    } else {
       alert("Project name can't be blank");
