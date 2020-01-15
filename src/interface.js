@@ -89,8 +89,8 @@ const createProject = (id = 0, name = "My first Project") => {
   const defaultProject = new Project(id, name);
   const projects = getProjectsStorage() || [];
 
-  projectUl().appendChild(liProject(defaultProject));
   projects.push(defaultProject);
+  projectUl().appendChild(liProject(defaultProject));
   updateProjectsStorage(projects);
   updateProjectsSelect(projects);
 };
@@ -99,10 +99,12 @@ const createTodo = ({ projectId, name, date, description, priority }) => {
   const id = getLastTodoId() + 1;
   const newTodo = new Todo(id, projectId, name, description, priority, date);
   const todos = getTodosStorage() || [];
+
   todoUl(projectId).appendChild(todoLi(newTodo));
   todos.push(newTodo);
   updateTodosStorage(todos);
 };
+
 const removeProject = id => {
   const projects = getProjectsStorage() || [];
   let todos = getTodosStorage() || [];
@@ -126,7 +128,7 @@ const removeTodo = id => {
 };
 
 const getLastProjectId = () => {
-  if (!checkProjectsStorage) return -1;
+  if (!checkProjectsStorage()) return -1;
   const projects = getProjectsStorage();
 
   return projects[projects.length - 1].getId();
