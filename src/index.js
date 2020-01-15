@@ -1,4 +1,5 @@
 import Project from './project';
+import { checkStorage, getStorage } from './interface';
 
 let projects = [];
 let actualProject = '';
@@ -6,16 +7,14 @@ const projectList = document.getElementById('projectList');
 const newProjectBtn = document.getElementById('newProjectBtn');
 const newProjectInput = document.getElementById('newProjectInput');
 
-if (localStorage.getItem('projects') !== null) {
-   const projectsJSON = JSON.parse(localStorage.getItem('projects'));
+if (checkStorage()) {
+   projects = getStorage();
 
-   projectsJSON.forEach(project => {
-      const newProject = new Project(project._id, project._name);
+   projects.forEach(project => {
       const projectLi = document.createElement('li');
 
-      projectLi.innerText = newProject.getName();
+      projectLi.innerText = project.getName();
       projectList.appendChild(projectLi);
-      projects.push(newProject);
    });
 } else {
    const defaultProject = new Project(0, 'My first Project');
