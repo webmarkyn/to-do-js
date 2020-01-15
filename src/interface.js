@@ -38,3 +38,9 @@ const getStorage = () => {
       return null;
   }
 };
+
+export {
+    updateStorage,
+    checkStorage,
+    getStorage,
+}
