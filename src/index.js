@@ -1,5 +1,6 @@
 import Project from './project';
-import { checkStorage, getStorage } from './interface';
+import {checkStorage, getStorage, updateStorage} from './interface';
+import { li } from './dom';
 
 let projects = [];
 let actualProject = '';
@@ -11,19 +12,14 @@ if (checkStorage()) {
    projects = getStorage();
 
    projects.forEach(project => {
-      const projectLi = document.createElement('li');
-
-      projectLi.innerText = project.getName();
-      projectList.appendChild(projectLi);
+      projectList.appendChild(li(project.getName()));
    });
 } else {
    const defaultProject = new Project(0, 'My first Project');
-   const projectLi = document.createElement('li');
 
-   projectLi.innerText = defaultProject.getName();
-   projectList.appendChild(projectLi);
+   projectList.appendChild(li(defaultProject.getName()));
    projects.push(defaultProject);
-   localStorage.setItem('projects', JSON.stringify(projects));
+   updateStorage(projects);
 }
 
 // listener for create new projects
