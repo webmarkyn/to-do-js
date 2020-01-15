@@ -1,5 +1,9 @@
+/**
+ * this module is used as an interface between classes, dom elements and index script
+ * every helper method should be included here
+ */
+
 import Project from './project';
-import Todo from './todo';
 import {liProject, projectUl} from './dom';
 
 /**

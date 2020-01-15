@@ -1,3 +1,8 @@
+/**
+ * this module is used to get and return DOM elements
+ * @return {HTMLElement}
+ */
+
 const projectUl = () => {
     return document.getElementById('projectList');
 };

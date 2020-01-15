@@ -1,4 +1,3 @@
-import Project from './project';
 import {checkStorage, createProject, getLastProjectId, getStorage} from './interface';
 import {getNewProjectInput, liProject, projectUl} from './dom';
 
