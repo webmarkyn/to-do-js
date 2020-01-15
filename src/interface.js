@@ -40,18 +40,25 @@ const getStorage = () => {
   }
 };
 
-const createDefaultProject = () => {
-    const defaultProject = new Project(0, 'My first Project');
-    const projects = [];
+const createProject = (id = 0, name = 'My first Project') => {
+    const defaultProject = new Project(id, name);
+    const projects = checkStorage() ? getStorage() : [];
 
     projectUl().appendChild(liProject(defaultProject));
     projects.push(defaultProject);
     updateStorage(projects);
 };
 
+const getLastProjectId = () => {
+  const projects = getStorage();
+
+  return projects[projects.length - 1].getId();
+};
+
 export {
     updateStorage,
     checkStorage,
     getStorage,
-    createDefaultProject,
+    createProject,
+    getLastProjectId,
 }
