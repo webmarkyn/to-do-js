@@ -1,6 +1,6 @@
 import Project from './project';
 import {checkStorage, getStorage, updateStorage} from './interface';
-import { li, projectUl } from './dom';
+import {liProject, projectUl} from './dom';
 
 let actualProject = '';
 let projects = checkStorage() ? getStorage() : [];
@@ -10,12 +10,12 @@ const newProjectInput = document.getElementById('newProjectInput');
 
 if (checkStorage()) {
    getStorage().forEach(project => {
-      projectList.appendChild(li(project.getName()));
+      projectList.appendChild(liProject(project));
    });
 } else {
    const defaultProject = new Project(0, 'My first Project');
 
-   projectList.appendChild(li(defaultProject.getName()));
+   projectList.appendChild(liProject(defaultProject));
    projects.push(defaultProject);
    updateStorage(projects);
 }

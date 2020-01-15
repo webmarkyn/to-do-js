@@ -6,15 +6,23 @@ const todoUl = () => {
     return document.getElementById('todoList');
 };
 
-const li = html => {
+const liProject = project => {
     const liTag = document.createElement('li');
-    liTag.innerHTML = html;
+    const removeBtn = document.createElement('button');
+
+    liTag.innerText = project.getName();
+    liTag.appendChild(removeBtn);
+
+    removeBtn.innerText = 'X';
+    removeBtn.addEventListener('click', () => {
+        alert('this should remove project ' + project.getName());
+    });
 
     return liTag;
 };
 
 export {
-    li,
+    liProject,
     projectUl,
     todoUl,
 }
