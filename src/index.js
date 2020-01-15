@@ -1,5 +1,5 @@
 import Project from './project';
-import {checkStorage, getStorage, updateStorage} from './interface';
+import {checkStorage, createDefaultProject, getStorage, updateStorage} from './interface';
 import {getNewProjectInput, liProject, projectUl} from './dom';
 
 let actualProject = '';
@@ -12,11 +12,7 @@ if (checkStorage()) {
       projectList.appendChild(liProject(project));
    });
 } else {
-   const defaultProject = new Project(0, 'My first Project');
-
-   projectList.appendChild(liProject(defaultProject));
-   projects.push(defaultProject);
-   updateStorage(projects);
+   createDefaultProject();
 }
 
 // listener for create new projects

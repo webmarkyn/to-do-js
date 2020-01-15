@@ -1,5 +1,6 @@
 import Project from './project';
 import Todo from './todo';
+import {liProject, projectUl} from './dom';
 
 /**
  * this method is used to save projects on the browser's local storage
@@ -39,8 +40,18 @@ const getStorage = () => {
   }
 };
 
+const createDefaultProject = () => {
+    const defaultProject = new Project(0, 'My first Project');
+    const projects = [];
+
+    projectUl().appendChild(liProject(defaultProject));
+    projects.push(defaultProject);
+    updateStorage(projects);
+};
+
 export {
     updateStorage,
     checkStorage,
     getStorage,
+    createDefaultProject,
 }
