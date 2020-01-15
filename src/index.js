@@ -1,17 +1,15 @@
 import Project from './project';
 import {checkStorage, getStorage, updateStorage} from './interface';
-import { li } from './dom';
+import { li, projectUl } from './dom';
 
-let projects = [];
 let actualProject = '';
-const projectList = document.getElementById('projectList');
+let projects = checkStorage() ? getStorage() : [];
+const projectList = projectUl();
 const newProjectBtn = document.getElementById('newProjectBtn');
 const newProjectInput = document.getElementById('newProjectInput');
 
 if (checkStorage()) {
-   projects = getStorage();
-
-   projects.forEach(project => {
+   getStorage().forEach(project => {
       projectList.appendChild(li(project.getName()));
    });
 } else {
