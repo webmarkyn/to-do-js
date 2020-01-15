@@ -1,12 +1,11 @@
 import Project from './project';
 import {checkStorage, getStorage, updateStorage} from './interface';
-import {liProject, projectUl} from './dom';
+import {getNewProjectInput, liProject, projectUl} from './dom';
 
 let actualProject = '';
 let projects = checkStorage() ? getStorage() : [];
 const projectList = projectUl();
 const newProjectBtn = document.getElementById('newProjectBtn');
-const newProjectInput = document.getElementById('newProjectInput');
 
 if (checkStorage()) {
    getStorage().forEach(project => {
@@ -22,8 +21,7 @@ if (checkStorage()) {
 
 // listener for create new projects
 newProjectBtn.addEventListener('click', () => {
-   const name = newProjectInput.value;
-   newProjectInput.value = '';
+   const name = getNewProjectInput();
 
    if (name) {
       const projectLi = document.createElement('li');

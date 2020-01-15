@@ -21,8 +21,18 @@ const liProject = project => {
     return liTag;
 };
 
+const getNewProjectInput = () => {
+    const input = document.getElementById('newProjectInput');
+    const name = input.value;
+
+    input.value = '';
+
+    return name;
+};
+
 export {
     liProject,
     projectUl,
     todoUl,
+    getNewProjectInput
 }
