@@ -46,3 +46,4 @@ newProjectBtn.addEventListener('click', () => {
       alert("Project name can't be blank");
    }
 });
+
