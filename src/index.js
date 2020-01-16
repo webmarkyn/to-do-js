@@ -2,7 +2,7 @@ import {
   createProject,
   getLastProjectId,
   updateProjectsSelect,
-  createTodo, setActualProject,
+  createTodo, setActualProject, getActualProject,
 } from './interface';
 import {
   getNewProjectInput,
@@ -25,11 +25,7 @@ if (checkProjectsStorage()) {
   });
 
   setActualProject(getProjectsStorage()[0]);
-  // if (checkTodosStorage()) {
-  //   getTodosStorage().forEach(todo => {
-  //     todoUl(todo.getProjectId()).appendChild(todoLi(todo));
-  //   });
-  // }
+
 } else {
   createProject();
   setActualProject(getProjectsStorage()[0]);

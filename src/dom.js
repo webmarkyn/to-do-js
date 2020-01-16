@@ -1,4 +1,4 @@
-import {getActualProject, removeProject, removeTodo} from './interface';
+import {getActualProject, removeProject, removeTodo, setActualProject} from './interface';
 
 /**
  * this module is used to get and return DOM elements
@@ -71,7 +71,7 @@ const liProject = project => {
   viewBtn.addEventListener('click', () => {
     const todos = document.getElementById('todoList');
     todos.innerText = project.getName() + ' tasks';
-    console.log(getActualProject());
+    setActualProject(project);
   });
 
   removeBtn.innerText = 'X';

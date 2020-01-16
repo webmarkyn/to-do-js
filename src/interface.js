@@ -42,6 +42,7 @@ const createProject = (id = 0, name = "My first Project") => {
   projects.push(defaultProject);
   projectUl().appendChild(liProject(defaultProject));
   updateProjectsStorage(projects);
+  setActualProject(defaultProject);
   updateProjectsSelect(projects);
 };
 
