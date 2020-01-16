@@ -40,18 +40,13 @@ newProjectBtn.addEventListener('click', () => {
 });
 
 newTodoBtn.addEventListener('click', () => {
-  console.log(getNewTodoName());
-  console.log(getNewTodoDescription());
-  console.log(getNewTodoPriority());
-  console.log(getNewTodoDate());
-  resetForm();
-  // createTodo(getActualProject(), )
-  // e.preventDefault();
-  // createTodo({
-  //   projectId: newTodoForm.projectSelect.value,
-  //   name: newTodoForm.todoName.value,
-  //   description: newTodoForm.todoDescription.value,
-  //   priority: newTodoForm.todoPriority.value,
-  //   date: newTodoForm.todoDate.value
-  // });
+  const name = getNewTodoName();
+  const description = getNewTodoDescription();
+  const priority = getNewTodoPriority();
+  const date = getNewTodoDate();
+
+  if (name && description && priority && date) {
+    createTodo(getActualProject(), name, description, priority, date);
+    resetForm();
+  }
 });

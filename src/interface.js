@@ -28,16 +28,6 @@ const createProject = (id = 0, name = "My first Project") => {
   setActualProject(defaultProject);
 };
 
-const createTodo = ({ projectId, name, date, description, priority }) => {
-  const id = getLastTodoId() + 1;
-  const newTodo = new Todo(id, projectId, name, description, priority, date);
-  const todos = getTodosStorage() || [];
-
-  todoUl(projectId).appendChild(todoLi(newTodo));
-  todos.push(newTodo);
-  updateTodosStorage(todos);
-};
-
 const getIndex = (collection, id) => {
   let index;
 
@@ -79,11 +69,39 @@ const getLastProjectId = () => {
   return projects[projects.length - 1].getId();
 };
 
-const getLastTodoId = () => {
-  if (!checkTodosStorage()) return -1;
-  const todos = getTodosStorage();
+const getLastTodoId = project => {
+  const todos = project.getTodos();
+  const length = todos.length;
 
-  return todos[todos.length - 1].getId();
+  if (length) {
+    return todos[length - 1].getId();
+  } else {
+    return -1;
+  }
+};
+
+const updateProjects = project => {
+  let projects = getProjectsStorage();
+  const index = getIndex(projects, project.getId());
+
+  projects[index] = project;
+  updateProjectsStorage(projects);
+};
+
+const createTodo = (project, name, description, priority, date) => {
+  const id = getLastTodoId(project) + 1;
+  const newTodo = new Todo(id, project.getId(), name, description, priority, date);
+
+  project.addTodo(newTodo);
+  updateProjects(project);
+
+  // const id = getLastTodoId() + 1;
+  // const newTodo = new Todo(id, projectId, name, description, priority, date);
+  // const todos = getTodosStorage() || [];
+  //
+  // todoUl(projectId).appendChild(todoLi(newTodo));
+  // todos.push(newTodo);
+  // updateTodosStorage(todos);
 };
 
 export {
