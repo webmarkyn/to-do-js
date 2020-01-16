@@ -1,9 +1,9 @@
+import { removeProject, removeTodo } from "./interface";
+
 /**
  * this module is used to get and return DOM elements
  * @return {HTMLElement}
  */
-
-import { removeProject, removeTodo } from "./interface";
 
 const projectUl = () => {
   return document.getElementById("projectList");

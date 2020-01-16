@@ -1,12 +1,8 @@
 import {
-  checkProjectsStorage,
   createProject,
   getLastProjectId,
-  getProjectsStorage,
   updateProjectsSelect,
   createTodo,
-  checkTodosStorage,
-  getTodosStorage
 } from "./interface";
 import {
   getNewProjectInput,
@@ -15,6 +11,7 @@ import {
   todoUl,
   todoLi
 } from "./dom";
+import {checkProjectsStorage, checkTodosStorage, getProjectsStorage, getTodosStorage} from './localstorage';
 
 let actualProject = "";
 let projects = checkProjectsStorage() ? getProjectsStorage() : [];
