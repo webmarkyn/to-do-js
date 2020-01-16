@@ -1,4 +1,3 @@
-import {projectSelect} from './dom';
 import Project from './project';
 import Todo from './todo';
 

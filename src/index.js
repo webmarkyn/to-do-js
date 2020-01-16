@@ -1,8 +1,4 @@
-import {
-  createProject,
-  getLastProjectId,
-  createTodo, setActualProject, getActualProject,
-} from './interface';
+import {createProject, getLastProjectId, createTodo, setActualProject, getActualProject} from './interface';
 import {getNewProjectInput, liProject, projectUl, todoUl} from "./dom";
 import {checkProjectsStorage, getProjectsStorage} from './localstorage';
 

@@ -25,17 +25,6 @@ const setActualProject = project => {
   _actualProject = project;
 };
 
-const updateProjectsSelect = projects => {
-  const selectEl = projectSelect();
-  selectEl.innerHTML = "";
-  projects.forEach(el => {
-    const option = document.createElement("option");
-    option.value = el.getId();
-    option.innerText = el.getName();
-    selectEl.appendChild(option);
-  });
-};
-
 const createProject = (id = 0, name = "My first Project") => {
   const defaultProject = new Project(id, name);
   const projects = getProjectsStorage() || [];
@@ -108,7 +97,6 @@ export {
   getActualProject,
   setActualProject,
   removeProject,
-  updateProjectsSelect,
   createProject,
   getLastProjectId,
   createTodo,
