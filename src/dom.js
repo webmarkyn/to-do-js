@@ -13,6 +13,11 @@ const projectSelect = () => {
   return document.getElementById("projectSelect");
 };
 
+const todoUl = projectId => {
+  // return projectUl().querySelector(`[data-id='${projectId}'] ul`);
+  return document.getElementById('todoList');
+};
+
 const todoLi = todo => {
   const todoEl = document.createElement("li");
   const actions = document.createElement("div");
@@ -51,10 +56,6 @@ const todoLi = todo => {
   });
 
   return todoEl;
-};
-
-const todoUl = projectId => {
-  return projectUl().querySelector(`[data-id='${projectId}'] ul`);
 };
 
 const liProject = project => {

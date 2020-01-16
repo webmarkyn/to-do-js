@@ -43,7 +43,6 @@ const createProject = (id = 0, name = "My first Project") => {
   projectUl().appendChild(liProject(defaultProject));
   updateProjectsStorage(projects);
   setActualProject(defaultProject);
-  updateProjectsSelect(projects);
 };
 
 const createTodo = ({ projectId, name, date, description, priority }) => {
