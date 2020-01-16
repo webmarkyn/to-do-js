@@ -14,6 +14,16 @@ import {
   updateTodosStorage
 } from './localstorage';
 
+let _actualProject = '';
+
+const getActualProject = () => {
+  return _actualProject;
+};
+
+const setActualProject = project => {
+  _actualProject = project;
+};
+
 const updateProjectsSelect = projects => {
   const selectEl = projectSelect();
   selectEl.innerHTML = "";
@@ -94,6 +104,8 @@ const getLastTodoId = () => {
 };
 
 export {
+  getActualProject,
+  setActualProject,
   removeProject,
   updateProjectsSelect,
   createProject,

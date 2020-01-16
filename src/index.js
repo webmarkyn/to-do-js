@@ -2,8 +2,8 @@ import {
   createProject,
   getLastProjectId,
   updateProjectsSelect,
-  createTodo,
-} from "./interface";
+  createTodo, setActualProject,
+} from './interface';
 import {
   getNewProjectInput,
   liProject,
@@ -13,7 +13,6 @@ import {
 } from "./dom";
 import {checkProjectsStorage, checkTodosStorage, getProjectsStorage, getTodosStorage} from './localstorage';
 
-let actualProject = "";
 let projects = checkProjectsStorage() ? getProjectsStorage() : [];
 const projectList = projectUl();
 const newProjectBtn = document.getElementById("newProjectBtn");
@@ -25,13 +24,15 @@ if (checkProjectsStorage()) {
     updateProjectsSelect(getProjectsStorage());
   });
 
-  if (checkTodosStorage()) {
-    getTodosStorage().forEach(todo => {
-      todoUl(todo.getProjectId()).appendChild(todoLi(todo));
-    });
-  }
+  setActualProject(getProjectsStorage()[0]);
+  // if (checkTodosStorage()) {
+  //   getTodosStorage().forEach(todo => {
+  //     todoUl(todo.getProjectId()).appendChild(todoLi(todo));
+  //   });
+  // }
 } else {
   createProject();
+  setActualProject(getProjectsStorage()[0]);
 }
 
 // listener for create new projects

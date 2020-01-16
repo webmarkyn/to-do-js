@@ -1,4 +1,4 @@
-import { removeProject, removeTodo } from "./interface";
+import {getActualProject, removeProject, removeTodo} from './interface';
 
 /**
  * this module is used to get and return DOM elements
@@ -60,14 +60,21 @@ const todoUl = projectId => {
 const liProject = project => {
   const liTag = document.createElement("li");
   const removeBtn = document.createElement("button");
-  // const todos = document.createElement("ul");
-  // todos.classList.add("project-todos");
+  const viewBtn = document.createElement('button');
 
   liTag.innerText = project.getName();
   liTag.id = project.getId();
+  liTag.appendChild(viewBtn);
   liTag.appendChild(removeBtn);
-  // liTag.appendChild(todos);
-  removeBtn.innerText = "X";
+
+  viewBtn.innerText = 'Show Tasks';
+  viewBtn.addEventListener('click', () => {
+    const todos = document.getElementById('todoList');
+    todos.innerText = project.getName() + ' tasks';
+    console.log(getActualProject());
+  });
+
+  removeBtn.innerText = 'X';
   removeBtn.addEventListener("click", () => {
     removeProject(liTag.id);
     liTag.parentElement.removeChild(liTag);
