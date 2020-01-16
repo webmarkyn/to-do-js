@@ -21,9 +21,6 @@ let projects = checkProjectsStorage() ? getProjectsStorage() : [];
 const projectList = projectUl();
 const newProjectBtn = document.getElementById("newProjectBtn");
 const newTodoForm = document.getElementById("newTodo");
-// const
-
-console.log(checkProjectsStorage());
 
 if (checkProjectsStorage()) {
   getProjectsStorage().forEach(project => {
@@ -62,5 +59,3 @@ newTodoForm.addEventListener("submit", e => {
     date: newTodoForm.todoDate.value
   });
 });
-
-console.log(todoUl(0));

@@ -120,21 +120,15 @@ const getIndex = (collection, id) => {
 const removeProject = id => {
   let projects = getProjectsStorage() || [];
   const index = getIndex(projects, id);
-  // let todos = getTodosStorage() || [];
 
   if (projects.length === 1) {
     projects = [];
   } else {
     if (projects[index]) {
       projects.splice(id, 1);
-      // if (todos && todos.length > 0) {
-      //   todos = todos.filter(todo => todo.getProjectId() !== id);
-      // }
     }
   }
-  // updateTodosStorage(todos);
   updateProjectsStorage(projects);
-  // updateProjectsSelect(projects);
 };
 
 const removeTodo = id => {
