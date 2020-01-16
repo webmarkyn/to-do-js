@@ -56,9 +56,8 @@ const todoUl = project => {
   list.innerHTML = '';
 
   if (todos.length) {
-    console.log(project.getTodos());
     project.getTodos().forEach(todo => {
-      console.log('hehe')
+      list.appendChild(todoLi(todo));
     });
   } else {
     list.innerText = 'No tasks to complete in project ' + project.getName();
