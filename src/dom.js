@@ -95,9 +95,69 @@ const getNewProjectInput = () => {
   const input = document.getElementById("newProjectInput");
   const name = input.value;
 
-  input.value = "";
+  input.value = '';
 
-  return name;
+  if (name) {
+    return name;
+  } else {
+    alert("Name can't be blank");
+    return false;
+  }
+};
+
+const getNewTodoName = () => {
+  const input = document.getElementById('todoName');
+  const name = input.value;
+
+  if (name) {
+    return name;
+  } else {
+    alert("Name can't be blank");
+    return false;
+  }
+};
+
+const getNewTodoDescription = () => {
+  const input = document.getElementById('todoDescription');
+  const description = input.value;
+
+  if (description) {
+    return description;
+  } else {
+    alert("Description can't be blank");
+    return false;
+  }
+};
+
+const getNewTodoPriority = () => {
+  const input = document.getElementById('todoPriority');
+  const priority = input.value;
+
+  if (priority) {
+    return priority;
+  } else {
+    alert("Priority must be selected");
+    return false;
+  }
+};
+
+const getNewTodoDate = () => {
+  const input = document.getElementById('todoDate');
+  const date = input.value;
+
+  if (date) {
+    return date;
+  } else {
+    alert("Date can't be blank");
+    return false;
+  }
+};
+
+const resetForm = () => {
+  document.getElementById('todoName').value = '';
+  document.getElementById('todoDescription').value = '';
+  document.getElementById('todoPriority').selectedIndex = 0;
+  document.getElementById('todoDate').value = '';
 };
 
 export {
@@ -105,5 +165,10 @@ export {
   projectUl,
   todoUl,
   getNewProjectInput,
-  todoLi
+  todoLi,
+  getNewTodoName,
+  getNewTodoDescription,
+  getNewTodoPriority,
+  getNewTodoDate,
+  resetForm
 };

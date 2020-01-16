@@ -1,11 +1,19 @@
 import {createProject, getLastProjectId, createTodo, setActualProject, getActualProject} from './interface';
-import {getNewProjectInput, liProject, projectUl, todoUl} from "./dom";
+import {
+  getNewProjectInput, getNewTodoDate,
+  getNewTodoDescription,
+  getNewTodoName,
+  getNewTodoPriority,
+  liProject,
+  projectUl, resetForm,
+  todoUl
+} from './dom';
 import {checkProjectsStorage, getProjectsStorage} from './localstorage';
 
 let projects = checkProjectsStorage() ? getProjectsStorage() : [];
 const projectList = projectUl();
-const newProjectBtn = document.getElementById("newProjectBtn");
-const newTodoForm = document.getElementById("newTodo");
+const newProjectBtn = document.getElementById('newProjectBtn');
+const newTodoBtn = document.getElementById('newTodoBtn');
 
 // this check if the local storage contains a projects key and if not it creates a default project
 if (checkProjectsStorage()) {
@@ -22,19 +30,22 @@ if (checkProjectsStorage()) {
 }
 
 // listener for create new projects
-newProjectBtn.addEventListener("click", () => {
+newProjectBtn.addEventListener('click', () => {
   const name = getNewProjectInput();
   const id = getLastProjectId() + 1;
 
   if (name) {
     createProject(id, name);
-  } else {
-    alert("Name can't be blank");
   }
 });
 
-newTodoForm.addEventListener("submit", () => {
-  alert('new project was created');
+newTodoBtn.addEventListener('click', () => {
+  console.log(getNewTodoName());
+  console.log(getNewTodoDescription());
+  console.log(getNewTodoPriority());
+  console.log(getNewTodoDate());
+  resetForm();
+  // createTodo(getActualProject(), )
   // e.preventDefault();
   // createTodo({
   //   projectId: newTodoForm.projectSelect.value,
