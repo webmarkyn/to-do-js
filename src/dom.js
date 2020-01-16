@@ -59,19 +59,18 @@ const todoUl = projectId => {
 
 const liProject = project => {
   const liTag = document.createElement("li");
-  const todos = document.createElement("ul");
-  todos.classList.add("project-todos");
   const removeBtn = document.createElement("button");
+  // const todos = document.createElement("ul");
+  // todos.classList.add("project-todos");
 
   liTag.innerText = project.getName();
-
-  liTag.dataset.id = project.getId();
+  liTag.id = project.getId();
   liTag.appendChild(removeBtn);
-  liTag.appendChild(todos);
+  // liTag.appendChild(todos);
   removeBtn.innerText = "X";
   removeBtn.addEventListener("click", () => {
-    removeProject(liTag.dataset.id);
-    liTag.outerHTML = "";
+    removeProject(liTag.id);
+    liTag.parentElement.removeChild(liTag);
   });
 
   return liTag;

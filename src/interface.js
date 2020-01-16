@@ -105,18 +105,36 @@ const createTodo = ({ projectId, name, date, description, priority }) => {
   updateTodosStorage(todos);
 };
 
+const getIndex = (collection, id) => {
+  let index;
+
+  if (collection[0].constructor === Project) {
+    index = collection.findIndex(project => {
+      return project.getId() === parseInt(id);
+    });
+  }
+
+  return index;
+};
+
 const removeProject = id => {
-  const projects = getProjectsStorage() || [];
-  let todos = getTodosStorage() || [];
-  if (projects[id]) {
-    projects.splice(id, 1);
-    if (todos && todos.length > 0) {
-      todos = todos.filter(todo => todo.getProjectId() !== id);
+  let projects = getProjectsStorage() || [];
+  const index = getIndex(projects, id);
+  // let todos = getTodosStorage() || [];
+
+  if (projects.length === 1) {
+    projects = [];
+  } else {
+    if (projects[index]) {
+      projects.splice(id, 1);
+      // if (todos && todos.length > 0) {
+      //   todos = todos.filter(todo => todo.getProjectId() !== id);
+      // }
     }
   }
-  updateTodosStorage(todos);
+  // updateTodosStorage(todos);
   updateProjectsStorage(projects);
-  updateProjectsSelect(projects);
+  // updateProjectsSelect(projects);
 };
 
 const removeTodo = id => {
