@@ -4,16 +4,9 @@
  */
 
 import Project from "./project";
-import { liProject, projectUl, todoUl, todoLi } from "./dom";
+import {liProject, projectUl, todoUl, todoLi} from "./dom";
 import Todo from "./todo";
-import {
-  checkProjectsStorage,
-  checkTodosStorage,
-  getProjectsStorage,
-  getTodosStorage,
-  updateProjectsStorage,
-  updateTodosStorage
-} from './localstorage';
+import {checkProjectsStorage, getProjectsStorage, updateProjectsStorage,} from './localstorage';
 
 let _actualProject = '';
 

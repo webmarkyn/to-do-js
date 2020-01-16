@@ -33,13 +33,14 @@ newProjectBtn.addEventListener("click", () => {
   }
 });
 
-newTodoForm.addEventListener("submit", e => {
-  e.preventDefault();
-  createTodo({
-    projectId: newTodoForm.projectSelect.value,
-    name: newTodoForm.todoName.value,
-    description: newTodoForm.todoDescription.value,
-    priority: newTodoForm.todoPriority.value,
-    date: newTodoForm.todoDate.value
-  });
+newTodoForm.addEventListener("submit", () => {
+  alert('new project was created');
+  // e.preventDefault();
+  // createTodo({
+  //   projectId: newTodoForm.projectSelect.value,
+  //   name: newTodoForm.todoName.value,
+  //   description: newTodoForm.todoDescription.value,
+  //   priority: newTodoForm.todoPriority.value,
+  //   date: newTodoForm.todoDate.value
+  // });
 });

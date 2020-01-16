@@ -10,10 +10,6 @@ const updateProjectsStorage = projects => {
     localStorage.setItem("projects", JSON.stringify(projects));
 };
 
-const updateTodosStorage = todos => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-};
-
 /**
  * this method is used for validate browser's local storage
  * @return boolean
@@ -23,10 +19,6 @@ const checkProjectsStorage = () => {
     return projects !== null && JSON.parse(projects).length > 0;
 };
 
-const checkTodosStorage = () => {
-    const todos = localStorage.getItem("todos");
-    return todos !== null && JSON.parse(todos).length > 0;
-};
 /**
  * this method is used for get the local storage
  * it return an array with projects objects
@@ -48,31 +40,8 @@ const getProjectsStorage = () => {
     }
 };
 
-const getTodosStorage = () => {
-    if (checkTodosStorage()) {
-        const todos = [];
-        const storage = JSON.parse(localStorage.getItem("todos"));
-
-        storage.forEach(todo => {
-            const newTodo = new Todo(
-                todo._id,
-                todo._projectId,
-                todo._name,
-                todo._description,
-                todo._priority,
-                todo._date
-            );
-            todos.push(newTodo);
-        });
-        return todos;
-    } else return null;
-};
-
 export {
     updateProjectsStorage,
-    updateTodosStorage,
     checkProjectsStorage,
-    checkTodosStorage,
     getProjectsStorage,
-    getTodosStorage
 };
