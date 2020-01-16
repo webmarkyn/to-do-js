@@ -94,14 +94,6 @@ const createTodo = (project, name, description, priority, date) => {
 
   project.addTodo(newTodo);
   updateProjects(project);
-
-  // const id = getLastTodoId() + 1;
-  // const newTodo = new Todo(id, projectId, name, description, priority, date);
-  // const todos = getTodosStorage() || [];
-  //
-  // todoUl(projectId).appendChild(todoLi(newTodo));
-  // todos.push(newTodo);
-  // updateTodosStorage(todos);
 };
 
 export {
