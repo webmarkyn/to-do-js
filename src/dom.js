@@ -9,10 +9,6 @@ const projectUl = () => {
   return document.getElementById("projectList");
 };
 
-const projectSelect = () => {
-  return document.getElementById("projectSelect");
-};
-
 const todoLi = todo => {
   const todoEl = document.createElement("li");
   const actions = document.createElement("div");
@@ -108,7 +104,6 @@ export {
   liProject,
   projectUl,
   todoUl,
-  projectSelect,
   getNewProjectInput,
   todoLi
 };

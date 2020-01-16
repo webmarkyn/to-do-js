@@ -4,10 +4,11 @@
  */
 
 import Project from "./project";
-import { liProject, projectUl, projectSelect, todoUl, todoLi } from "./dom";
+import { liProject, projectUl, todoUl, todoLi } from "./dom";
 import Todo from "./todo";
 import {
-  checkProjectsStorage, checkTodosStorage,
+  checkProjectsStorage,
+  checkTodosStorage,
   getProjectsStorage,
   getTodosStorage,
   updateProjectsStorage,

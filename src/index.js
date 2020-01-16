@@ -1,7 +1,6 @@
 import {
   createProject,
   getLastProjectId,
-  updateProjectsSelect,
   createTodo, setActualProject, getActualProject,
 } from './interface';
 import {getNewProjectInput, liProject, projectUl, todoUl} from "./dom";
@@ -16,7 +15,6 @@ const newTodoForm = document.getElementById("newTodo");
 if (checkProjectsStorage()) {
   getProjectsStorage().forEach(project => {
     projectList.appendChild(liProject(project));
-    updateProjectsSelect(getProjectsStorage());
   });
 
   setActualProject(getProjectsStorage()[0]);
