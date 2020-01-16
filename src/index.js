@@ -20,11 +20,11 @@ if (checkProjectsStorage()) {
   });
 
   setActualProject(getProjectsStorage()[0]);
-  todoUl();
+  todoUl(getActualProject());
 } else {
   createProject();
   setActualProject(getProjectsStorage()[0]);
-  todoUl();
+  todoUl(getActualProject());
 }
 
 // listener for create new projects

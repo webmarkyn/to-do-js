@@ -13,11 +13,6 @@ const projectSelect = () => {
   return document.getElementById("projectSelect");
 };
 
-const todoUl = projectId => {
-  // return projectUl().querySelector(`[data-id='${projectId}'] ul`);
-  return document.getElementById('todoList');
-};
-
 const todoLi = todo => {
   const todoEl = document.createElement("li");
   const actions = document.createElement("div");
@@ -58,6 +53,22 @@ const todoLi = todo => {
   return todoEl;
 };
 
+const todoUl = project => {
+  const list = document.getElementById('todoList');
+  const todos = project.getTodos();
+
+  list.innerHTML = '';
+
+  if (todos.length) {
+    console.log(project.getTodos());
+    project.getTodos().forEach(todo => {
+      console.log('hehe')
+    });
+  } else {
+    list.innerText = 'No tasks to complete in project ' + project.getName();
+  }
+};
+
 const liProject = project => {
   const liTag = document.createElement("li");
   const removeBtn = document.createElement("button");
@@ -70,9 +81,8 @@ const liProject = project => {
 
   viewBtn.innerText = 'Show Tasks';
   viewBtn.addEventListener('click', () => {
-    const todos = document.getElementById('todoList');
-    todos.innerText = project.getName() + ' tasks';
     setActualProject(project);
+    todoUl(getActualProject());
   });
 
   removeBtn.innerText = 'X';
