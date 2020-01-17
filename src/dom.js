@@ -1,4 +1,4 @@
-import {getActualProject, removeProject, removeTodo, setActualProject, toggleState} from './interface';
+import {getActualProject, removeProject, removeTodo, setActualProject, toggleState, updateTodo} from './interface';
 
 /**
  * this module is used to get and return DOM elements
@@ -7,6 +7,43 @@ import {getActualProject, removeProject, removeTodo, setActualProject, toggleSta
 
 const projectUl = () => {
   return document.getElementById("projectList");
+};
+
+const editTodo = (todo) => {
+  const container = document.createElement('div');
+  const name = document.createElement('input');
+  const description = document.createElement('textarea');
+  const priority = document.createElement('select');
+  const date = document.createElement('input');
+  const save = document.createElement('button');
+
+  ['High', 'Mid', 'Low'].forEach(element => {
+    const option = document.createElement('option');
+    option.value = element;
+    option.innerText = element;
+    priority.appendChild(option);
+  });
+
+  name.type = 'text';
+  date.type = 'date';
+  save.innerText = 'save';
+
+  name.value = todo.getName();
+  description.value = todo.getDescription();
+  date.value = todo.getDate();
+
+  container.appendChild(name);
+  container.appendChild(description);
+  container.appendChild(priority);
+  container.appendChild(date);
+  container.appendChild(save);
+
+  save.addEventListener('click', () => {
+    updateTodo(getActualProject(), todo, name.value, description.value, priority.value, date.value);
+    todoUl(getActualProject());
+  });
+
+  return container;
 };
 
 const todoLi = todo => {
@@ -46,7 +83,8 @@ const todoLi = todo => {
   });
 
   editBtn.addEventListener("click", () => {
-    alert("edit");
+    todoEl.innerHTML = '';
+    todoEl.appendChild(editTodo(todo));
   });
 
   status.addEventListener('click', () => {

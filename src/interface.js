@@ -114,6 +114,21 @@ const toggleState = (project, todo) => {
   setActualProject(project);
 };
 
+const updateTodo = (project, todo, newName, newDescription, newPriority, newDate) => {
+  const todos = project.getTodos();
+  const index = getIndex(todos, todo.getId());
+
+  todo.updateName(newName);
+  todo.updateDescription(newDescription);
+  todo.updatePriority(newPriority);
+  todo.updateDate(newDate);
+
+  todos[index] = todo;
+  project.setTodos(todos);
+  updateProjects(project);
+  setActualProject(project);
+};
+
 export {
   getActualProject,
   setActualProject,
@@ -123,5 +138,6 @@ export {
   createTodo,
   getLastTodoId,
   removeTodo,
-  toggleState
+  toggleState,
+  updateTodo
 };
