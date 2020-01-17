@@ -18,6 +18,7 @@
       "no-param-reassign": "off",
       "eol-last": "off",
       "no-underscore-dangle": "off",
-      "no-alert": "off"
+      "no-alert": "off",
+      "no-restricted-globals": "off"
     }
 }
