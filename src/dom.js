@@ -9,6 +9,21 @@ import {
 
 const projectUl = () => document.getElementById('projectList');
 
+const todoUl = (project) => {
+  const list = document.getElementById('todoList');
+  const todos = project.getTodos();
+
+  list.innerHTML = '';
+
+  if (todos.length) {
+    project.getTodos().forEach((todo) => {
+      list.appendChild(todoLi(todo));
+    });
+  } else {
+    list.innerText = `No tasks to complete in project ${project.getName()}`;
+  }
+};
+
 const editTodo = (todo) => {
   const container = document.createElement('div');
   const name = document.createElement('input');
@@ -94,21 +109,6 @@ const todoLi = (todo) => {
   });
 
   return todoEl;
-};
-
-const todoUl = (project) => {
-  const list = document.getElementById('todoList');
-  const todos = project.getTodos();
-
-  list.innerHTML = '';
-
-  if (todos.length) {
-    project.getTodos().forEach((todo) => {
-      list.appendChild(todoLi(todo));
-    });
-  } else {
-    list.innerText = `No tasks to complete in project ${project.getName()}`;
-  }
 };
 
 const liProject = (project) => {
