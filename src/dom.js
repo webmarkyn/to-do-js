@@ -1,4 +1,4 @@
-import {getActualProject, removeProject, removeTodo, setActualProject} from './interface';
+import {getActualProject, removeProject, removeTodo, setActualProject, toggleState} from './interface';
 
 /**
  * this module is used to get and return DOM elements
@@ -18,13 +18,16 @@ const todoLi = todo => {
   const description = document.createElement("p");
   const priority = document.createElement("p");
   const date = document.createElement("p");
+  const status = document.createElement('button');
+
   actions.appendChild(removeBtn);
   actions.appendChild(editBtn);
 
   todoEl.classList.add("todo-item");
   name.innerText = todo.getName();
   description.innerText = todo.getDescription();
-  priority.innerText = todo.getPriority();
+  priority.innerText = 'Priority: ' + todo.getPriority();
+  status.innerText = 'Completed: ' + todo.getState();
   date.innerText = todo.getDate();
 
   editBtn.innerText = "Edit";
@@ -34,14 +37,20 @@ const todoLi = todo => {
   todoEl.appendChild(description);
   todoEl.appendChild(priority);
   todoEl.appendChild(date);
+  todoEl.appendChild(status);
   todoEl.appendChild(actions);
 
   removeBtn.addEventListener("click", () => {
     removeTodo(getActualProject(), todo.getId());
     todoEl.parentElement.removeChild(todoEl);
   });
+
   editBtn.addEventListener("click", () => {
     alert("edit");
+  });
+
+  status.addEventListener('click', () => {
+    toggleState(getActualProject(), todo);
   });
 
   return todoEl;
