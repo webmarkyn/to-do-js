@@ -31,11 +31,9 @@ const createProject = (id = 0, name = "My first Project") => {
 const getIndex = (collection, id) => {
   let index;
 
-  if (collection[0].constructor === Project) {
-    index = collection.findIndex(project => {
-      return project.getId() === parseInt(id);
-    });
-  }
+  index = collection.findIndex(object => {
+    return object.getId() === parseInt(id);
+  });
 
   return index;
 };
@@ -54,12 +52,28 @@ const removeProject = id => {
   updateProjectsStorage(projects);
 };
 
-const removeTodo = id => {
-  const todos = getTodosStorage() || [];
-  if (todos[id]) {
-    todos.splice(id, 1);
+const updateProjects = project => {
+  let projects = getProjectsStorage();
+  const index = getIndex(projects, project.getId());
+
+  projects[index] = project;
+  updateProjectsStorage(projects);
+};
+
+const removeTodo = (project, todoId) => {
+  const todos = project.getTodos();
+  const index = getIndex(todos, todoId);
+
+  if (todos.length === 1) {
+    project.setTodos([]);
+  } else {
+    if (todos[index]) {
+      todos.splice(index, 1);
+      project.setTodos(todos);
+    }
   }
-  updateTodosStorage(todos);
+
+  updateProjects(project);
 };
 
 const getLastProjectId = () => {
@@ -78,14 +92,6 @@ const getLastTodoId = project => {
   } else {
     return -1;
   }
-};
-
-const updateProjects = project => {
-  let projects = getProjectsStorage();
-  const index = getIndex(projects, project.getId());
-
-  projects[index] = project;
-  updateProjectsStorage(projects);
 };
 
 const createTodo = (project, name, description, priority, date) => {

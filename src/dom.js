@@ -21,16 +21,14 @@ const todoLi = todo => {
   actions.appendChild(removeBtn);
   actions.appendChild(editBtn);
 
-  todoEl.dataset.priority = todo.getPriority();
   todoEl.classList.add("todo-item");
-  todoEl.dataset.id = todo.getId();
-  todoEl.dataset.projectId = todo.getProjectId();
-  editBtn.innerText = "Edit";
-  removeBtn.innerText = "X";
   name.innerText = todo.getName();
   description.innerText = todo.getDescription();
   priority.innerText = todo.getPriority();
   date.innerText = todo.getDate();
+
+  editBtn.innerText = "Edit";
+  removeBtn.innerText = "X";
 
   todoEl.appendChild(name);
   todoEl.appendChild(description);
@@ -39,8 +37,8 @@ const todoLi = todo => {
   todoEl.appendChild(actions);
 
   removeBtn.addEventListener("click", () => {
-    removeTodo(todoEl.dataset.id);
-    todoEl.outerHTML = "";
+    removeTodo(getActualProject(), todo.getId());
+    todoEl.parentElement.removeChild(todoEl);
   });
   editBtn.addEventListener("click", () => {
     alert("edit");
