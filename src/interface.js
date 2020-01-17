@@ -111,8 +111,7 @@ const toggleState = (project, todo) => {
   project.setTodos(todos);
 
   updateProjects(project);
-
-  todoUl(project);
+  setActualProject(project);
 };
 
 export {

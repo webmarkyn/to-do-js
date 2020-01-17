@@ -10,7 +10,6 @@ import {
 } from './dom';
 import {checkProjectsStorage, getProjectsStorage} from './localstorage';
 
-let projects = checkProjectsStorage() ? getProjectsStorage() : [];
 const projectList = projectUl();
 const newProjectBtn = document.getElementById('newProjectBtn');
 const newTodoBtn = document.getElementById('newTodoBtn');

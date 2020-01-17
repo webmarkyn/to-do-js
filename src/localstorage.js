@@ -36,7 +36,7 @@ const getProjectsStorage = () => {
                 let todos = [];
 
                 project._todos.forEach(todo => {
-                    todos.push(new Todo(todo._id, project._id, todo._name, todo._description, todo._priority, todo._date));
+                    todos.push(new Todo(todo._id, project._id, todo._name, todo._description, todo._priority, todo._date, todo._state));
                 });
 
                 newProject.setTodos(todos);
