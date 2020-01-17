@@ -4,7 +4,6 @@
  */
 
 import Project from './project';
-// import { liProject, projectUl, todoUl } from './dom';
 import Todo from './todo';
 import {
   checkProjectsStorage, getProjectsStorage, setActualProject, updateProjectsStorage,
@@ -19,7 +18,7 @@ const createProject = (id = 0, name = 'My first Project') => {
   setActualProject(defaultProject);
 };
 
-const getIndex = (collect, id) => collect.findIndex((object) => object.getId() === Number(id));
+const getIndex = (collect, id) => collect.findIndex(object => object.getId() === Number(id));
 
 const removeProject = (id) => {
   let projects = getProjectsStorage() || [];
