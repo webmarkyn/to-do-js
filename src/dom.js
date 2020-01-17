@@ -145,11 +145,10 @@ const getNewProjectInput = () => {
 
   if (name) {
     return name;
-  } else {
-    input.placeholder = "Can't be blank";
-    input.style.border = 'solid 2px red';
-    return false;
   }
+  input.placeholder = "Can't be blank";
+  input.style.border = 'solid 2px red';
+  return false;
 };
 
 const getNewTodoName = () => {
@@ -158,11 +157,10 @@ const getNewTodoName = () => {
 
   if (name) {
     return name;
-  } else {
-    input.placeholder = "Can't be blank";
-    input.style.border = 'solid 1px red';
-    return false;
   }
+  input.placeholder = "Can't be blank";
+  input.style.border = 'solid 1px red';
+  return false;
 };
 
 const closePopup = (popup) => {
@@ -186,11 +184,10 @@ const getNewTodoDescription = () => {
 
   if (description) {
     return description;
-  } else {
-    input.placeholder = "Can't be blank";
-    input.style.border = 'solid 1px red';
-    return false;
   }
+  input.placeholder = "Can't be blank";
+  input.style.border = 'solid 1px red';
+  return false;
 };
 
 const getNewTodoPriority = () => {
@@ -199,11 +196,10 @@ const getNewTodoPriority = () => {
 
   if (priority) {
     return priority;
-  } else {
-    input.placeholder = "Can't be blank";
-    input.style.border = 'solid 1px red';
-    return false;
   }
+  input.placeholder = "Can't be blank";
+  input.style.border = 'solid 1px red';
+  return false;
 };
 
 const getNewTodoDate = () => {
@@ -212,11 +208,10 @@ const getNewTodoDate = () => {
 
   if (date) {
     return date;
-  } else {
-    input.placeholder = "Can't be blank";
-    input.style.border = 'solid 1px red';
-    return false;
   }
+  input.placeholder = "Can't be blank";
+  input.style.border = 'solid 1px red';
+  return false;
 };
 
 const resetForm = () => {
