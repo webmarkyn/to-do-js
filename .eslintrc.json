@@ -21,6 +21,6 @@
       "no-alert": "off",
       "no-restricted-globals": "off",
       "import/no-cycle": "off",
-      "no-use-before-define": "warn"
+      "no-use-before-define": "off"
     }
 }
