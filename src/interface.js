@@ -4,7 +4,7 @@
  */
 
 import Project from './project';
-import { liProject, projectUl } from './dom';
+import { liProject, projectUl, todoUl } from './dom';
 import Todo from './todo';
 import { checkProjectsStorage, getProjectsStorage, updateProjectsStorage } from './localstorage';
 
@@ -97,6 +97,8 @@ const toggleState = (project, todo) => {
 
   updateProjects(project);
   setActualProject(project);
+
+  todoUl(project);
 };
 
 const updateTodo = (project, todo, newName, newDescription, newPriority, newDate) => {
@@ -112,6 +114,7 @@ const updateTodo = (project, todo, newName, newDescription, newPriority, newDate
   project.setTodos(todos);
   updateProjects(project);
   setActualProject(project);
+  todoUl(project);
 };
 
 export {

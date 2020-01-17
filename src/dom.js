@@ -9,21 +9,6 @@ import {
 
 const projectUl = () => document.getElementById('projectList');
 
-const todoUl = (project) => {
-  const list = document.getElementById('todoList');
-  const todos = project.getTodos();
-
-  list.innerHTML = '';
-
-  if (todos.length) {
-    project.getTodos().forEach((todo) => {
-      list.appendChild(todoLi(todo));
-    });
-  } else {
-    list.innerText = `No tasks to complete in project ${project.getName()}`;
-  }
-};
-
 const editTodo = (todo) => {
   const container = document.createElement('div');
   const name = document.createElement('input');
@@ -55,11 +40,11 @@ const editTodo = (todo) => {
 
   save.addEventListener('click', () => {
     updateTodo(getActualProject(), todo, name.value, description.value, priority.value, date.value);
-    todoUl(getActualProject());
   });
 
   return container;
 };
+
 
 const todoLi = (todo) => {
   const todoEl = document.createElement('li');
@@ -105,10 +90,24 @@ const todoLi = (todo) => {
 
   status.addEventListener('click', () => {
     toggleState(getActualProject(), todo);
-    todoUl(getActualProject());
   });
 
   return todoEl;
+};
+
+const todoUl = (project) => {
+  const list = document.getElementById('todoList');
+  const todos = project.getTodos();
+
+  list.innerHTML = '';
+
+  if (todos.length) {
+    project.getTodos().forEach((todo) => {
+      list.appendChild(todoLi(todo));
+    });
+  } else {
+    list.innerText = `No tasks to complete in project ${project.getName()}`;
+  }
 };
 
 const liProject = (project) => {
