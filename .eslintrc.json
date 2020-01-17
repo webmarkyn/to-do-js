@@ -19,6 +19,8 @@
       "eol-last": "off",
       "no-underscore-dangle": "off",
       "no-alert": "off",
-      "no-restricted-globals": "off"
+      "no-restricted-globals": "off",
+      "import/no-cycle": "off",
+      "no-use-before-define": "warn"
     }
 }
