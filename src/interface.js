@@ -26,7 +26,7 @@ const createProject = (id = 0, name = 'My first Project') => {
   setActualProject(defaultProject);
 };
 
-const getIndex = (collect, id) => collect.findIndex((object) => object.getId() === Number(id));
+const getIndex = (collect, id) => collect.findIndex(object => object.getId() === Number(id));
 
 const removeProject = (id) => {
   let projects = getProjectsStorage() || [];
