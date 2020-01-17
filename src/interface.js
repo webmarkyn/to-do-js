@@ -8,12 +8,12 @@ import { liProject, projectUl } from './dom';
 import Todo from './todo';
 import { checkProjectsStorage, getProjectsStorage, updateProjectsStorage } from './localstorage';
 
-let _actualProject = '';
+let actualProject = '';
 
-const getActualProject = () => _actualProject;
+const getActualProject = () => actualProject;
 
 const setActualProject = (project) => {
-  _actualProject = project;
+  actualProject = project;
 };
 
 const createProject = (id = 0, name = 'My first Project') => {

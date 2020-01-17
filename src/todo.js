@@ -1,59 +1,59 @@
 export default class Todo {
   constructor(id, projectId, name, description = '', priority = null, date, state = false) {
-    this._id = id;
-    this._projectId = projectId;
-    this._name = name;
-    this._description = description;
-    this._state = state;
-    this._priority = priority;
-    this._date = date;
+    this.id = id;
+    this.projectId = projectId;
+    this.name = name;
+    this.description = description;
+    this.state = state;
+    this.priority = priority;
+    this.date = date;
   }
 
   getId() {
-    return this._id;
+    return this.id;
   }
 
   getProjectId() {
-    return this._projectId;
+    return this.projectId;
   }
 
   getName() {
-    return this._name;
+    return this.name;
   }
 
   updateName(value) {
-    this._name = value;
+    this.name = value;
   }
 
   getPriority() {
-    return this._priority;
+    return this.priority;
   }
 
   updatePriority(value) {
-    this._priority = value;
+    this.priority = value;
   }
 
   getDate() {
-    return this._date;
+    return this.date;
   }
 
   updateDate(value) {
-    this._date = value;
+    this.date = value;
   }
 
   getDescription() {
-    return this._description;
+    return this.description;
   }
 
   updateState() {
-    this._state = !this._state;
+    this.state = !this.state;
   }
 
   getState() {
-    return this._state;
+    return this.state;
   }
 
   updateDescription(value) {
-    this._description = value;
+    this.description = value;
   }
 }

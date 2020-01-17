@@ -30,23 +30,23 @@ const getProjectsStorage = () => {
     const storage = JSON.parse(localStorage.getItem('projects'));
 
     storage.forEach((project) => {
-      const newProject = new Project(project._id, project._name);
+      const newProject = new Project(project.id, project.name);
 
-      if (project._todos.length) {
-        const todos = [];
+      if (project.todos.length) {
+        const newTodos = [];
 
-        project._todos.forEach((todo) => {
-          todos.push(new Todo(
-            todo._id, project._id,
-            todo._name,
-            todo._description,
-            todo._priority,
-            todo._date,
-            todo._state,
+        project.todos.forEach((todo) => {
+          newTodos.push(new Todo(
+            todo.id, project.id,
+            todo.name,
+            todo.description,
+            todo.priority,
+            todo.date,
+            todo.state,
           ));
         });
 
-        newProject.setTodos(todos);
+        newProject.setTodos(newTodos);
       }
 
       projects.push(newProject);
