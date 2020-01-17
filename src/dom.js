@@ -131,7 +131,7 @@ const liProject = (project) => {
   removeBtn.addEventListener('click', () => {
     removeProject(liTag.id);
     liTag.parentElement.removeChild(liTag);
-    location.reload();
+    window.location.reload();
   });
 
   return liTag;
