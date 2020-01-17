@@ -36,6 +36,7 @@ newProjectBtn.addEventListener('click', () => {
 
   if (name) {
     createProject(id, name);
+    todoUl(getActualProject());
   }
 });
 
