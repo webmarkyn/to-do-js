@@ -91,7 +91,6 @@ const todoLi = todo => {
   status.addEventListener('click', () => {
     toggleState(getActualProject(), todo);
     todoUl(getActualProject());
-    console.log(getActualProject());
   });
 
   return todoEl;
