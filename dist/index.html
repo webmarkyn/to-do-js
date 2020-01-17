@@ -2,17 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>To-Do projects</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div id="projectsContainer" class="projects">
     <h3>My Projects</h3>
-    <input id="newProjectInput" type="text" placeholder="Project Name">
-    <button id="newProjectBtn">New Project</button>
+    <div class="newProject">
+        <input id="newProjectInput" type="text" placeholder="Project Name">
+        <button id="newProjectBtn">Add Project</button>
+    </div>
+    
     <ul id="projectList"></ul>
 </div>
 <div id="todosContainer" class="todos">
     <h3>My Tasks</h3>
+    <button id="showNewTodoPopup">Add Todo</button>
+    <ul id="todoList"></ul>
+</div>
+<div id="newTodoPopup">
     <div id="newTodo">
         <input id="todoName" type="text" placeholder="Task Name">
         <textarea id="todoDescription" name="" id="" cols="30" rows="5" placeholder="Task Description"></textarea>
@@ -24,7 +32,6 @@
         <input id="todoDate" type="date">
         <button id="newTodoBtn">New Task</button>
     </div>
-    <ul id="todoList"></ul>
 </div>
 <script src="main.js"></script>
 </body>

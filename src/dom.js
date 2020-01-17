@@ -61,6 +61,7 @@ const todoLi = todo => {
   actions.appendChild(editBtn);
 
   todoEl.classList.add("todo-item");
+  todoEl.dataset.state = todo.getState()
   name.innerText = todo.getName();
   description.innerText = todo.getDescription();
   priority.innerText = 'Priority: ' + todo.getPriority();
@@ -163,6 +164,21 @@ const getNewTodoName = () => {
   }
 };
 
+const closePopup = popup => {
+  popup.style.opacity = '0'
+
+  const trans = () => {
+    popup.style.visibility = 'hidden'
+    popup.removeEventListener('transitionend', trans)
+  }
+  popup.addEventListener('transitionend', trans)
+}
+
+const openPopup = popup => {
+  popup.style.visibility = 'visible'
+  popup.style.opacity = '1'
+}
+
 const getNewTodoDescription = () => {
   const input = document.getElementById('todoDescription');
   const description = input.value;
@@ -216,5 +232,7 @@ export {
   getNewTodoDescription,
   getNewTodoPriority,
   getNewTodoDate,
-  resetForm
+  resetForm,
+  closePopup,
+  openPopup
 };
