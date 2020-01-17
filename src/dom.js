@@ -145,9 +145,11 @@ const getNewProjectInput = () => {
 
   if (name) {
     return name;
+  } else {
+    input.placeholder = "Can't be blank";
+    input.style.border = 'solid 2px red';
+    return false;
   }
-  alert("Name can't be blank");
-  return false;
 };
 
 const getNewTodoName = () => {
@@ -156,9 +158,11 @@ const getNewTodoName = () => {
 
   if (name) {
     return name;
+  } else {
+    input.placeholder = "Can't be blank";
+    input.style.border = 'solid 1px red';
+    return false;
   }
-  alert("Name can't be blank");
-  return false;
 };
 
 const closePopup = (popup) => {
@@ -182,9 +186,11 @@ const getNewTodoDescription = () => {
 
   if (description) {
     return description;
+  } else {
+    input.placeholder = "Can't be blank";
+    input.style.border = 'solid 1px red';
+    return false;
   }
-  alert("Description can't be blank");
-  return false;
 };
 
 const getNewTodoPriority = () => {
@@ -193,9 +199,11 @@ const getNewTodoPriority = () => {
 
   if (priority) {
     return priority;
+  } else {
+    input.placeholder = "Can't be blank";
+    input.style.border = 'solid 1px red';
+    return false;
   }
-  alert('Priority must be selected');
-  return false;
 };
 
 const getNewTodoDate = () => {
@@ -204,9 +212,11 @@ const getNewTodoDate = () => {
 
   if (date) {
     return date;
+  } else {
+    input.placeholder = "Can't be blank";
+    input.style.border = 'solid 1px red';
+    return false;
   }
-  alert("Date can't be blank");
-  return false;
 };
 
 const resetForm = () => {
