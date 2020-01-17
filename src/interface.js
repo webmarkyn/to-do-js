@@ -4,7 +4,7 @@
  */
 
 import Project from "./project";
-import {liProject, projectUl, todoUl, todoLi} from "./dom";
+import {liProject, projectUl} from "./dom";
 import Todo from "./todo";
 import {checkProjectsStorage, getProjectsStorage, updateProjectsStorage,} from './localstorage';
 
