@@ -4,29 +4,22 @@
  */
 
 import Project from './project';
-import { liProject, projectUl, todoUl } from './dom';
+// import { liProject, projectUl, todoUl } from './dom';
 import Todo from './todo';
-import { checkProjectsStorage, getProjectsStorage, updateProjectsStorage } from './localstorage';
-
-let actualProject = '';
-
-const getActualProject = () => actualProject;
-
-const setActualProject = (project) => {
-  actualProject = project;
-};
+import {
+  checkProjectsStorage, getProjectsStorage, setActualProject, updateProjectsStorage,
+} from './localstorage';
 
 const createProject = (id = 0, name = 'My first Project') => {
   const defaultProject = new Project(id, name);
   const projects = getProjectsStorage() || [];
 
   projects.push(defaultProject);
-  projectUl().appendChild(liProject(defaultProject));
   updateProjectsStorage(projects);
   setActualProject(defaultProject);
 };
 
-const getIndex = (collect, id) => collect.findIndex(object => object.getId() === Number(id));
+const getIndex = (collect, id) => collect.findIndex((object) => object.getId() === Number(id));
 
 const removeProject = (id) => {
   let projects = getProjectsStorage() || [];
@@ -97,8 +90,6 @@ const toggleState = (project, todo) => {
 
   updateProjects(project);
   setActualProject(project);
-
-  todoUl(project);
 };
 
 const updateTodo = (project, todo, newName, newDescription, newPriority, newDate) => {
@@ -114,12 +105,11 @@ const updateTodo = (project, todo, newName, newDescription, newPriority, newDate
   project.setTodos(todos);
   updateProjects(project);
   setActualProject(project);
-  todoUl(project);
+
+  return todo;
 };
 
 export {
-  getActualProject,
-  setActualProject,
   removeProject,
   createProject,
   getLastProjectId,

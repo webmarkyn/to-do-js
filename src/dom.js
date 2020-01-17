@@ -1,52 +1,20 @@
 import {
-  getActualProject, removeProject, removeTodo, setActualProject, toggleState, updateTodo,
+  removeProject, removeTodo, toggleState, updateTodo,
 } from './interface';
+import { setActualProject } from './localstorage';
 
 /**
  * this module is used to get and return DOM elements
  * @return {HTMLElement}
  */
-
 const projectUl = () => document.getElementById('projectList');
 
-const editTodo = (todo) => {
-  const container = document.createElement('div');
-  const name = document.createElement('input');
-  const description = document.createElement('textarea');
-  const priority = document.createElement('select');
-  const date = document.createElement('input');
-  const save = document.createElement('button');
-
-  ['High', 'Mid', 'Low'].forEach((element) => {
-    const option = document.createElement('option');
-    option.value = element;
-    option.innerText = element;
-    priority.appendChild(option);
-  });
-
-  name.type = 'text';
-  date.type = 'date';
-  save.innerText = 'save';
-
-  name.value = todo.getName();
-  description.value = todo.getDescription();
-  date.value = todo.getDate();
-
-  container.appendChild(name);
-  container.appendChild(description);
-  container.appendChild(priority);
-  container.appendChild(date);
-  container.appendChild(save);
-
-  save.addEventListener('click', () => {
-    updateTodo(getActualProject(), todo, name.value, description.value, priority.value, date.value);
-  });
-
-  return container;
-};
-
-
-const todoLi = (todo) => {
+/**
+ * @param project
+ * @param todo
+ * @return {HTMLLIElement}
+ */
+const todoLi = (project, todo) => {
   const todoEl = document.createElement('li');
   const actions = document.createElement('div');
   const removeBtn = document.createElement('button');
@@ -79,17 +47,58 @@ const todoLi = (todo) => {
   todoEl.appendChild(actions);
 
   removeBtn.addEventListener('click', () => {
-    removeTodo(getActualProject(), todo.getId());
+    removeTodo(project, todo.getId());
     todoEl.parentElement.removeChild(todoEl);
   });
 
   editBtn.addEventListener('click', () => {
+    const container = document.createElement('div');
+    const name = document.createElement('input');
+    const description = document.createElement('textarea');
+    const priority = document.createElement('select');
+    const date = document.createElement('input');
+    const save = document.createElement('button');
+
+    ['High', 'Mid', 'Low'].forEach((element) => {
+      const option = document.createElement('option');
+      option.value = element;
+      option.innerText = element;
+      priority.appendChild(option);
+    });
+
+    name.type = 'text';
+    date.type = 'date';
+    save.innerText = 'save';
+
+    name.value = todo.getName();
+    description.value = todo.getDescription();
+    date.value = todo.getDate();
+
+    container.appendChild(name);
+    container.appendChild(description);
+    container.appendChild(priority);
+    container.appendChild(date);
+    container.appendChild(save);
+
     todoEl.innerHTML = '';
-    todoEl.appendChild(editTodo(todo));
+    todoEl.appendChild(container);
+
+    save.addEventListener('click', () => {
+      const updated = updateTodo(
+        project,
+        todo,
+        name.value,
+        description.value,
+        priority.value,
+        date.value,
+      );
+      todoEl.parentElement.replaceChild(todoLi(project, updated), todoEl);
+    });
   });
 
   status.addEventListener('click', () => {
-    toggleState(getActualProject(), todo);
+    toggleState(project, todo);
+    status.innerText = `COMPLETED: ${todo.getState()}`;
   });
 
   return todoEl;
@@ -103,7 +112,7 @@ const todoUl = (project) => {
 
   if (todos.length) {
     project.getTodos().forEach((todo) => {
-      list.appendChild(todoLi(todo));
+      list.appendChild(todoLi(project, todo));
     });
   } else {
     list.innerText = `No tasks to complete in project ${project.getName()}`;
@@ -123,7 +132,7 @@ const liProject = (project) => {
   viewBtn.innerText = 'Show Tasks';
   viewBtn.addEventListener('click', () => {
     setActualProject(project);
-    todoUl(getActualProject());
+    todoUl(project);
   });
 
   removeBtn.innerText = 'X';

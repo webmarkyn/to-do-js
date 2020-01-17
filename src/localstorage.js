@@ -1,6 +1,14 @@
 import Project from './project';
 import Todo from './todo';
 
+let actualProject = '';
+
+const getActualProject = () => actualProject;
+
+const setActualProject = (project) => {
+  actualProject = project;
+};
+
 /**
  * this method is used to save projects on the browser's local storage
  * it gets an array with the projects
@@ -58,6 +66,8 @@ const getProjectsStorage = () => {
 };
 
 export {
+  getActualProject,
+  setActualProject,
   updateProjectsStorage,
   checkProjectsStorage,
   getProjectsStorage,

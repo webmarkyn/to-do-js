@@ -1,6 +1,4 @@
-import {
-  createProject, getLastProjectId, createTodo, setActualProject, getActualProject,
-} from './interface';
+import { createProject, getLastProjectId, createTodo } from './interface';
 import {
   getNewProjectInput, getNewTodoDate,
   getNewTodoDescription,
@@ -12,7 +10,9 @@ import {
   closePopup,
   openPopup,
 } from './dom';
-import { checkProjectsStorage, getProjectsStorage } from './localstorage';
+import {
+  checkProjectsStorage, getActualProject, getProjectsStorage, setActualProject,
+} from './localstorage';
 
 const projectList = projectUl();
 const newProjectBtn = document.getElementById('newProjectBtn');
@@ -41,6 +41,7 @@ newProjectBtn.addEventListener('click', () => {
 
   if (name) {
     createProject(id, name);
+    projectUl().appendChild(liProject(getActualProject()));
     todoUl(getActualProject());
   }
 });
