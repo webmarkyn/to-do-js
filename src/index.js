@@ -48,5 +48,6 @@ newTodoBtn.addEventListener('click', () => {
   if (name && description && priority && date) {
     createTodo(getActualProject(), name, description, priority, date);
     resetForm();
+    todoUl(getActualProject());
   }
 });
