@@ -1,4 +1,6 @@
-import {createProject, getLastProjectId, createTodo, setActualProject, getActualProject} from './interface';
+import {
+  createProject, getLastProjectId, createTodo, setActualProject, getActualProject,
+} from './interface';
 import {
   getNewProjectInput, getNewTodoDate,
   getNewTodoDescription,
@@ -8,19 +10,19 @@ import {
   projectUl, resetForm,
   todoUl,
   closePopup,
-  openPopup
+  openPopup,
 } from './dom';
-import {checkProjectsStorage, getProjectsStorage} from './localstorage';
+import { checkProjectsStorage, getProjectsStorage } from './localstorage';
 
 const projectList = projectUl();
 const newProjectBtn = document.getElementById('newProjectBtn');
 const newTodoBtn = document.getElementById('newTodoBtn');
-const newTodoPopup = document.getElementById('newTodoPopup')
-const showNewTodoPopupButton = document.getElementById('showNewTodoPopup')
+const newTodoPopup = document.getElementById('newTodoPopup');
+const showNewTodoPopupButton = document.getElementById('showNewTodoPopup');
 
 // this check if the local storage contains a projects key and if not it creates a default project
 if (checkProjectsStorage()) {
-  getProjectsStorage().forEach(project => {
+  getProjectsStorage().forEach((project) => {
     projectList.appendChild(liProject(project));
   });
 
@@ -44,14 +46,14 @@ newProjectBtn.addEventListener('click', () => {
 });
 
 showNewTodoPopupButton.addEventListener('click', () => {
-  openPopup(newTodoPopup)
-})
+  openPopup(newTodoPopup);
+});
 
 newTodoPopup.addEventListener('click', (e) => {
   if (e.target === newTodoPopup) {
-    closePopup(newTodoPopup)
+    closePopup(newTodoPopup);
   }
-})
+});
 
 newTodoBtn.addEventListener('click', () => {
   const name = getNewTodoName();
@@ -63,6 +65,6 @@ newTodoBtn.addEventListener('click', () => {
     createTodo(getActualProject(), name, description, priority, date);
     resetForm();
     todoUl(getActualProject());
-    closePopup(newTodoPopup)
+    closePopup(newTodoPopup);
   }
 });

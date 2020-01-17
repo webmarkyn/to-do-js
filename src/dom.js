@@ -1,13 +1,13 @@
-import {getActualProject, removeProject, removeTodo, setActualProject, toggleState, updateTodo} from './interface';
+import {
+  getActualProject, removeProject, removeTodo, setActualProject, toggleState, updateTodo,
+} from './interface';
 
 /**
  * this module is used to get and return DOM elements
  * @return {HTMLElement}
  */
 
-const projectUl = () => {
-  return document.getElementById("projectList");
-};
+const projectUl = () => document.getElementById('projectList');
 
 const editTodo = (todo) => {
   const container = document.createElement('div');
@@ -17,7 +17,7 @@ const editTodo = (todo) => {
   const date = document.createElement('input');
   const save = document.createElement('button');
 
-  ['High', 'Mid', 'Low'].forEach(element => {
+  ['High', 'Mid', 'Low'].forEach((element) => {
     const option = document.createElement('option');
     option.value = element;
     option.innerText = element;
@@ -46,30 +46,30 @@ const editTodo = (todo) => {
   return container;
 };
 
-const todoLi = todo => {
-  const todoEl = document.createElement("li");
-  const actions = document.createElement("div");
-  const removeBtn = document.createElement("button");
-  const editBtn = document.createElement("button");
-  const name = document.createElement("p");
-  const description = document.createElement("p");
-  const priority = document.createElement("p");
-  const date = document.createElement("p");
+const todoLi = (todo) => {
+  const todoEl = document.createElement('li');
+  const actions = document.createElement('div');
+  const removeBtn = document.createElement('button');
+  const editBtn = document.createElement('button');
+  const name = document.createElement('p');
+  const description = document.createElement('p');
+  const priority = document.createElement('p');
+  const date = document.createElement('p');
   const status = document.createElement('button');
 
   actions.appendChild(removeBtn);
   actions.appendChild(editBtn);
 
-  todoEl.classList.add("todo-item");
-  todoEl.dataset.state = todo.getState()
+  todoEl.classList.add('todo-item');
+  todoEl.dataset.state = todo.getState();
   name.innerText = todo.getName();
   description.innerText = todo.getDescription();
-  priority.innerText = 'Priority: ' + todo.getPriority();
-  status.innerText = 'Completed: ' + todo.getState();
+  priority.innerText = `Priority: ${todo.getPriority()}`;
+  status.innerText = `Completed: ${todo.getState()}`;
   date.innerText = todo.getDate();
 
-  editBtn.innerText = "Edit";
-  removeBtn.innerText = "X";
+  editBtn.innerText = 'Edit';
+  removeBtn.innerText = 'X';
 
   todoEl.appendChild(name);
   todoEl.appendChild(description);
@@ -78,12 +78,12 @@ const todoLi = todo => {
   todoEl.appendChild(status);
   todoEl.appendChild(actions);
 
-  removeBtn.addEventListener("click", () => {
+  removeBtn.addEventListener('click', () => {
     removeTodo(getActualProject(), todo.getId());
     todoEl.parentElement.removeChild(todoEl);
   });
 
-  editBtn.addEventListener("click", () => {
+  editBtn.addEventListener('click', () => {
     todoEl.innerHTML = '';
     todoEl.appendChild(editTodo(todo));
   });
@@ -96,24 +96,24 @@ const todoLi = todo => {
   return todoEl;
 };
 
-const todoUl = project => {
+const todoUl = (project) => {
   const list = document.getElementById('todoList');
   const todos = project.getTodos();
 
   list.innerHTML = '';
 
   if (todos.length) {
-    project.getTodos().forEach(todo => {
+    project.getTodos().forEach((todo) => {
       list.appendChild(todoLi(todo));
     });
   } else {
-    list.innerText = 'No tasks to complete in project ' + project.getName();
+    list.innerText = `No tasks to complete in project ${project.getName()}`;
   }
 };
 
-const liProject = project => {
-  const liTag = document.createElement("li");
-  const removeBtn = document.createElement("button");
+const liProject = (project) => {
+  const liTag = document.createElement('li');
+  const removeBtn = document.createElement('button');
   const viewBtn = document.createElement('button');
 
   liTag.innerText = project.getName();
@@ -128,7 +128,7 @@ const liProject = project => {
   });
 
   removeBtn.innerText = 'X';
-  removeBtn.addEventListener("click", () => {
+  removeBtn.addEventListener('click', () => {
     removeProject(liTag.id);
     liTag.parentElement.removeChild(liTag);
     location.reload();
@@ -138,17 +138,16 @@ const liProject = project => {
 };
 
 const getNewProjectInput = () => {
-  const input = document.getElementById("newProjectInput");
+  const input = document.getElementById('newProjectInput');
   const name = input.value;
 
   input.value = '';
 
   if (name) {
     return name;
-  } else {
-    alert("Name can't be blank");
-    return false;
   }
+  alert("Name can't be blank");
+  return false;
 };
 
 const getNewTodoName = () => {
@@ -157,26 +156,25 @@ const getNewTodoName = () => {
 
   if (name) {
     return name;
-  } else {
-    alert("Name can't be blank");
-    return false;
   }
+  alert("Name can't be blank");
+  return false;
 };
 
-const closePopup = popup => {
-  popup.style.opacity = '0'
+const closePopup = (popup) => {
+  popup.style.opacity = '0';
 
   const trans = () => {
-    popup.style.visibility = 'hidden'
-    popup.removeEventListener('transitionend', trans)
-  }
-  popup.addEventListener('transitionend', trans)
-}
+    popup.style.visibility = 'hidden';
+    popup.removeEventListener('transitionend', trans);
+  };
+  popup.addEventListener('transitionend', trans);
+};
 
-const openPopup = popup => {
-  popup.style.visibility = 'visible'
-  popup.style.opacity = '1'
-}
+const openPopup = (popup) => {
+  popup.style.visibility = 'visible';
+  popup.style.opacity = '1';
+};
 
 const getNewTodoDescription = () => {
   const input = document.getElementById('todoDescription');
@@ -184,10 +182,9 @@ const getNewTodoDescription = () => {
 
   if (description) {
     return description;
-  } else {
-    alert("Description can't be blank");
-    return false;
   }
+  alert("Description can't be blank");
+  return false;
 };
 
 const getNewTodoPriority = () => {
@@ -196,10 +193,9 @@ const getNewTodoPriority = () => {
 
   if (priority) {
     return priority;
-  } else {
-    alert("Priority must be selected");
-    return false;
   }
+  alert('Priority must be selected');
+  return false;
 };
 
 const getNewTodoDate = () => {
@@ -208,10 +204,9 @@ const getNewTodoDate = () => {
 
   if (date) {
     return date;
-  } else {
-    alert("Date can't be blank");
-    return false;
   }
+  alert("Date can't be blank");
+  return false;
 };
 
 const resetForm = () => {
@@ -233,5 +228,5 @@ export {
   getNewTodoDate,
   resetForm,
   closePopup,
-  openPopup
+  openPopup,
 };

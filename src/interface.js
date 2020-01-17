@@ -3,22 +3,20 @@
  * every helper method should be included here
  */
 
-import Project from "./project";
-import {liProject, projectUl} from "./dom";
-import Todo from "./todo";
-import {checkProjectsStorage, getProjectsStorage, updateProjectsStorage,} from './localstorage';
+import Project from './project';
+import { liProject, projectUl } from './dom';
+import Todo from './todo';
+import { checkProjectsStorage, getProjectsStorage, updateProjectsStorage } from './localstorage';
 
 let _actualProject = '';
 
-const getActualProject = () => {
-  return _actualProject;
-};
+const getActualProject = () => _actualProject;
 
-const setActualProject = project => {
+const setActualProject = (project) => {
   _actualProject = project;
 };
 
-const createProject = (id = 0, name = "My first Project") => {
+const createProject = (id = 0, name = 'My first Project') => {
   const defaultProject = new Project(id, name);
   const projects = getProjectsStorage() || [];
 
@@ -31,29 +29,25 @@ const createProject = (id = 0, name = "My first Project") => {
 const getIndex = (collection, id) => {
   let index;
 
-  index = collection.findIndex(object => {
-    return object.getId() === parseInt(id);
-  });
+  index = collection.findIndex((object) => object.getId() === parseInt(id));
 
   return index;
 };
 
-const removeProject = id => {
+const removeProject = (id) => {
   let projects = getProjectsStorage() || [];
   const index = getIndex(projects, id);
 
   if (projects.length === 1) {
     projects = [];
-  } else {
-    if (projects[index]) {
-      projects.splice(index, 1);
-    }
+  } else if (projects[index]) {
+    projects.splice(index, 1);
   }
   updateProjectsStorage(projects);
 };
 
-const updateProjects = project => {
-  let projects = getProjectsStorage();
+const updateProjects = (project) => {
+  const projects = getProjectsStorage();
   const index = getIndex(projects, project.getId());
 
   projects[index] = project;
@@ -66,11 +60,9 @@ const removeTodo = (project, todoId) => {
 
   if (todos.length === 1) {
     project.setTodos([]);
-  } else {
-    if (todos[index]) {
-      todos.splice(index, 1);
-      project.setTodos(todos);
-    }
+  } else if (todos[index]) {
+    todos.splice(index, 1);
+    project.setTodos(todos);
   }
 
   updateProjects(project);
@@ -83,15 +75,14 @@ const getLastProjectId = () => {
   return projects[projects.length - 1].getId();
 };
 
-const getLastTodoId = project => {
+const getLastTodoId = (project) => {
   const todos = project.getTodos();
-  const length = todos.length;
+  const { length } = todos;
 
   if (length) {
     return todos[length - 1].getId();
-  } else {
-    return -1;
   }
+  return -1;
 };
 
 const createTodo = (project, name, description, priority, date) => {
@@ -139,5 +130,5 @@ export {
   getLastTodoId,
   removeTodo,
   toggleState,
-  updateTodo
+  updateTodo,
 };
