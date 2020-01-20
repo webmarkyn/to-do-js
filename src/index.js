@@ -31,6 +31,7 @@ if (checkProjectsStorage()) {
 } else {
   createProject();
   setActualProject(getProjectsStorage()[0]);
+  projectUl().appendChild(liProject(getActualProject()))
   todoUl(getActualProject());
 }
 
