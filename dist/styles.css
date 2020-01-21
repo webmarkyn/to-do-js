@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #54a0ff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #222f3e;
+}
+
+.projects {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.projects h3 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.newProject {
+    display: flex;
+    justify-content: center;
+}
+
+.newProject * {
+    margin: 0 30px;
+}
+
+.newProject input {
+    height: 30px;
+    border-radius: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    background: #fff;
+    color: #000;
+    border: none;
+}
+
+.newProject button {
+    border: none;
+    background: #1dd1a1;
+    padding: 5px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #222f3e;
+    font-weight: bold;
+}
+
+#projectList {
+    max-width: 600px;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#projectList li {
+    list-style: none;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+#projectList li button {
+    border: none;
+    padding: 5px 22px;
+    font-size: 17px;
+    margin: 0 10px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#projectList li button:first-child {
+    background: #ff9f43;
+    margin-left: 35px;
+}
+
+#projectList li button:last-child {
+    background: #ee5253;
+}
+
+.todos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#newTodoPopup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+}
+
+#newTodo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #c8d6e5;
+    border-radius: 20px;
+}
+
+#newTodo input, #newTodo textarea, #newTodo select, #newTodo button {
+    margin: 10px 0;
+    width: 250px;
+    height: 25px;
+    border: none;
+    font-size: 17px;
+}
+
+#showNewTodoPopup {
+    background: #f368e0;
+    border: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 5px 15px;
+    cursor: pointer;
+
+}
+
+#todoList {
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    list-style: none;
+    margin: 10px 0;
+    /* justify-content: space-around; */
+    transition: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.todo-item[data-state="false"] {
+    border-left: 3px solid #ee5253;
+}
+
+.todo-item[data-state="true"] {
+    border-left: 3px solid #00d2d3;
+}
+
+.todo-item p {
+    margin: 0 20px;
+}
+
+.todo-item button {
+    margin: 0 10px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.todo-item>button {
+    background: #01a3a4;
+}
+
+.todo-item>div>button:first-child {
+    background: #ee5253;
+}
+
+.todo-item>div>button:last-child {
+    background: #feca57;
+}
+
+.todo-item>div {
+    display: flex;
+}
+
+.todo-item>div>input, .todo-item>div>select, .todo-item>div>textarea {
+    padding: 0;
+    height: 20px;
+    margin: 0 10px;
+    resize: none;
+}
+
+
