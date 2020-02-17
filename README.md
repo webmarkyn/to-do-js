@@ -13,7 +13,7 @@ you can find the original description in [The Odin Project](https://www.theodinp
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://htmlpreview.github.io/?https://github.com/webmarkyn/to-do-js/blob/development/dist/index.html)
 
 
 ## Getting Started
