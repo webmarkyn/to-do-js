@@ -1,8 +1,6 @@
 # To-Do List
 
-this is a microverse project that comes after having learned `Objects`, `Factories`, and `Modules`. The goal of this
-project is create a To-do list with the possibility of add each task into different projects and also apply the basics
-of CRUD. 
+this is a microverse project that comes after having learned `Objects`, `Factories`, and `Modules`. The goal of this project is create a to-do list that allows users to add each task into different projects while applying the basics of CRUD.
 
 you can find the original description in [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/todo-list)
 
